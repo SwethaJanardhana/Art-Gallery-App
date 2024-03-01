@@ -1,4 +1,6 @@
+import ArtPiecePreview from "@/components/ArtPiecePreview/ArtPiecePreview";
 import ArtPieces from "@/components/ArtPieces/ArtPieces";
+import Spotlight from "@/components/Spotlight/Spotlight";
 import useSWR from "swr";
 
 const URL = "https://example-apis.vercel.app/api/art";
@@ -16,6 +18,10 @@ async function fetcher(url) {
   return response.json();
 }
 
+function getRandomPiece(length) {
+  return Math.floor(Math.random() * length);
+}
+
 export default function HomePage() {
   const { data, error, isLoading } = useSWR(URL, fetcher);
 
@@ -26,9 +32,13 @@ export default function HomePage() {
   if (error) {
     return <h1>Error ...</h1>;
   }
+
+  const randomPiece = data[getRandomPiece(data.length)];
+
   return (
     <div>
       <ArtPieces pieces={data} />
+      <Spotlight image={randomPiece.imageSource} artist={randomPiece.artist} />
     </div>
   );
 }
