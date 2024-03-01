@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { styled } from "styled-components";
-import ArtPiecePreview from "../ArtPiecePreview/ArtPiecePreview";
+import ArtPiecePreview from "../ArtPiecePreview";
 
 const StyledImage = styled(Image)`
   object-fit: contain;
