@@ -1,7 +1,11 @@
 import ArtPiecePreview from "../ArtPiecePreview";
 import Link from "next/link";
 
-export default function ArtPieces({ pieces, onToggleFavorite }) {
+export default function ArtPieces({
+  pieces,
+  onToggleFavorite,
+  onSubmitComment,
+}) {
   return (
     <ul>
       {pieces.map((piece) => (
@@ -14,6 +18,7 @@ export default function ArtPieces({ pieces, onToggleFavorite }) {
             isFavorite={piece.isFavorite}
             onToggleFavorite={onToggleFavorite}
             slug={piece.slug}
+            onSubmitComment={onSubmitComment}
           />
           {/* </Link> */}
         </li>

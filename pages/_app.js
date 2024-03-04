@@ -2,6 +2,7 @@ import GlobalStyle from "../styles";
 import useSWR from "swr";
 import Layout from "@/components/Layout";
 import { useState } from "react";
+import { uid } from "uid";
 
 const URL = "https://example-apis.vercel.app/api/art";
 
@@ -43,6 +44,23 @@ export default function App({ Component, pageProps }) {
     );
   }
 
+  function handleAddComments(slug, comment) {
+    console.log(slug, comment);
+    const commentToAdd = {
+      id: uid(),
+      comment,
+      date: new Date().toLocaleDateString("en-us", {
+        dateStyle: "medium",
+      }),
+    };
+    setArtPiecesInfo(
+      updatedPieces.map((piece) =>
+        piece.slug === slug
+          ? { ...piece, comments: [...comments, commentToAdd] }
+          : piece
+      )
+    );
+  }
   return (
     <>
       <Layout />
@@ -50,6 +68,7 @@ export default function App({ Component, pageProps }) {
       <Component
         data={updatedPieces}
         onToggleFavorite={handleToggleFavorite}
+        onSubmitComment={handleAddComments}
         {...pageProps}
       />
     </>

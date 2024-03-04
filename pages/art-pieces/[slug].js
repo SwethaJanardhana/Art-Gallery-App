@@ -1,7 +1,11 @@
 import ArtPieceDetails from "@/components/ArtPieceDetails";
 import { useRouter } from "next/router";
 
-export default function DetailedPage({ data, onToggleFavorite }) {
+export default function DetailedPage({
+  data,
+  onToggleFavorite,
+  onSubmitComment,
+}) {
   const router = useRouter();
   const { slug } = router.query;
 
@@ -18,6 +22,7 @@ export default function DetailedPage({ data, onToggleFavorite }) {
       isFavorite={isFavorite}
       slug={slug}
       onToggleFavorite={onToggleFavorite}
+      onSubmitComment={onSubmitComment}
     />
   );
 }
