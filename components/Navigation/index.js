@@ -5,6 +5,7 @@ export default function Navigation() {
     <nav>
       <Link href="/">Spotlight</Link>
       <Link href="/art-pieces">Pieces</Link>
+      <Link href="/favorites">Favorites</Link>
     </nav>
   );
 }

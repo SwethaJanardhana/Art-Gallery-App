@@ -6,15 +6,16 @@ export default function ArtPieces({ pieces, onToggleFavorite }) {
     <ul>
       {pieces.map((piece) => (
         <li key={piece.slug}>
-          <Link href={`/art-pieces/${piece.slug}`}>
-            <ArtPiecePreview
-              image={piece.imageSource}
-              title={piece.name}
-              artist={piece.artist}
-              isFavorite={piece.isFavorite}
-              onToggleFavorite={onToggleFavorite}
-            />
-          </Link>
+          {/* <Link href={`/art-pieces/${piece.slug}`}> */}
+          <ArtPiecePreview
+            image={piece.imageSource}
+            title={piece.name}
+            artist={piece.artist}
+            isFavorite={piece.isFavorite}
+            onToggleFavorite={onToggleFavorite}
+            slug={piece.slug}
+          />
+          {/* </Link> */}
         </li>
       ))}
     </ul>
