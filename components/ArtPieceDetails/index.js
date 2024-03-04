@@ -2,6 +2,7 @@ import { styled } from "styled-components";
 import Image from "next/image";
 import Link from "next/link";
 import LeftArrow from "@/public/assets/left-arrow.svg";
+import FavoriteButton from "../FavoriteButton";
 
 const StyledLeftArrow = styled(LeftArrow)`
   width: 2rem;
@@ -13,12 +14,26 @@ const StyledImage = styled(Image)`
   heigth: auto;
 `;
 
-export default function ArtPieceDetails({ image, title, artist, year, genre }) {
+export default function ArtPieceDetails({
+  image,
+  title,
+  artist,
+  year,
+  genre,
+  slug,
+  isFavorite,
+  onToggleFavorite,
+}) {
   return (
     <>
       <Link href="/art-pieces">
         <StyledLeftArrow />
       </Link>
+      <FavoriteButton
+        isFavorite={isFavorite}
+        onToggleFavorite={onToggleFavorite}
+        slug={slug}
+      />
       <h2>{title}</h2>
       <p>{artist}</p>
       <StyledImage src={image} alt={title} width={100} height={100} />
