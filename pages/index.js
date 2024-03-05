@@ -1,10 +1,18 @@
 import Spotlight from "@/components/Spotlight";
-
+import { useEffect, useState } from "react";
 export default function SpotlightPage({ data, onToggleFavorite }) {
+  const [randomIndex, setRandomIndex] = useState(null);
+
   function getRandomPiece(length) {
     return Math.floor(Math.random() * length);
   }
-  const randomPiece = data[getRandomPiece(data.length)];
+  useEffect(() => {
+    setRandomIndex(getRandomPiece(data.length));
+  }, []);
+
+  const randomPiece = data[randomIndex];
+
+  if (randomIndex === null) return;
 
   return (
     <div>
