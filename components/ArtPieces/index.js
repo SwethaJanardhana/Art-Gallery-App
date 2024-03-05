@@ -1,5 +1,16 @@
+import styled from "styled-components";
 import ArtPiecePreview from "../ArtPiecePreview";
-import Link from "next/link";
+
+const StyledList = styled.ul`
+  list-style: none;
+`;
+
+const StyledListItem = styled.li`
+  border: 1px solid black;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+  padding: 1rem;
+`;
 
 export default function ArtPieces({
   pieces,
@@ -7,9 +18,9 @@ export default function ArtPieces({
   onSubmitComment,
 }) {
   return (
-    <ul>
+    <StyledList>
       {pieces.map((piece) => (
-        <li key={piece.slug}>
+        <StyledListItem key={piece.slug}>
           <ArtPiecePreview
             image={piece.imageSource}
             title={piece.name}
@@ -19,8 +30,8 @@ export default function ArtPieces({
             slug={piece.slug}
             onSubmitComment={onSubmitComment}
           />
-        </li>
+        </StyledListItem>
       ))}
-    </ul>
+    </StyledList>
   );
 }
