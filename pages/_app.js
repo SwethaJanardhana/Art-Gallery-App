@@ -84,15 +84,16 @@ export default function App({ Component, pageProps }) {
 
   return (
     <>
-      <Layout />
-      <GlobalStyle />
-      <Component
-        data={updatedPieces}
-        onToggleFavorite={handleToggleFavorite}
-        onSubmitComment={handleAddComment}
-        onDeleteComment={handleDeleteComment}
-        {...pageProps}
-      />
+      <Layout>
+        <GlobalStyle />
+        <Component
+          data={updatedPieces}
+          onToggleFavorite={handleToggleFavorite}
+          onSubmitComment={handleAddComment}
+          onDeleteComment={handleDeleteComment}
+          {...pageProps}
+        />
+      </Layout>
     </>
   );
 }

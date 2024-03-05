@@ -1,5 +1,15 @@
+import styled from "styled-components";
 import Navigation from "../Navigation";
 
-export default function Layout() {
-  return <Navigation />;
+const StyledMain = styled.main`
+  margin: 2rem;
+`;
+
+export default function Layout({ children }) {
+  return (
+    <StyledMain>
+      {children}
+      <Navigation />
+    </StyledMain>
+  );
 }
