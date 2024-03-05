@@ -8,7 +8,7 @@ export default function SpotlightPage({ data, onToggleFavorite }) {
   }
   useEffect(() => {
     setRandomIndex(getRandomPiece(data.length));
-  }, []);
+  }, [data.length]);
 
   const randomPiece = data[randomIndex];
 

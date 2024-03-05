@@ -16,6 +16,19 @@ const StyledImage = styled(Image)`
   heigth: auto;
 `;
 
+const StyledList = styled.ul`
+  display: flex;
+  gap: 0.5rem;
+  list-style: none;
+`;
+
+const StyledDiv = styled.div`
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  background-color: ${({ $color }) => $color};
+`;
+
 export default function ArtPieceDetails({
   image,
   title,
@@ -28,6 +41,7 @@ export default function ArtPieceDetails({
   onSubmitComment,
   comments,
   onDeleteComment,
+  colors,
 }) {
   return (
     <>
@@ -42,6 +56,13 @@ export default function ArtPieceDetails({
       <h2>{title}</h2>
       <p>{artist}</p>
       <StyledImage src={image} alt={title} width={100} height={100} />
+      <StyledList>
+        {colors.map((color) => (
+          <li key={color}>
+            <StyledDiv $color={color}></StyledDiv>
+          </li>
+        ))}
+      </StyledList>
       <p>
         {year}, {genre}
       </p>
