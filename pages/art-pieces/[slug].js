@@ -5,13 +5,13 @@ export default function DetailedPage({
   data,
   onToggleFavorite,
   onSubmitComment,
+  onDeleteComment,
 }) {
   const router = useRouter();
   const { slug } = router.query;
 
-  const { imageSource, name, artist, year, genre, isFavorite } = data.find(
-    (piece) => piece.slug === slug
-  );
+  const { imageSource, name, artist, year, genre, isFavorite, comments } =
+    data.find((piece) => piece.slug === slug);
   return (
     <ArtPieceDetails
       image={imageSource}
@@ -21,8 +21,10 @@ export default function DetailedPage({
       genre={genre}
       isFavorite={isFavorite}
       slug={slug}
+      comments={comments}
       onToggleFavorite={onToggleFavorite}
       onSubmitComment={onSubmitComment}
+      onDeleteComment={onDeleteComment}
     />
   );
 }

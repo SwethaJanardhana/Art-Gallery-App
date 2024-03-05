@@ -4,6 +4,7 @@ import Link from "next/link";
 import LeftArrow from "@/public/assets/left-arrow.svg";
 import FavoriteButton from "../FavoriteButton";
 import CommentForm from "../CommentForm";
+import Comments from "../Comments";
 
 const StyledLeftArrow = styled(LeftArrow)`
   width: 2rem;
@@ -25,6 +26,8 @@ export default function ArtPieceDetails({
   isFavorite,
   onToggleFavorite,
   onSubmitComment,
+  comments,
+  onDeleteComment,
 }) {
   return (
     <>
@@ -42,6 +45,11 @@ export default function ArtPieceDetails({
       <p>
         {year}, {genre}
       </p>
+      <Comments
+        comments={comments}
+        slug={slug}
+        onDeleteComment={onDeleteComment}
+      />
       <CommentForm slug={slug} onSubmitComment={onSubmitComment} />
     </>
   );

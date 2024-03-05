@@ -10,7 +10,6 @@ export default function ArtPieces({
     <ul>
       {pieces.map((piece) => (
         <li key={piece.slug}>
-          {/* <Link href={`/art-pieces/${piece.slug}`}> */}
           <ArtPiecePreview
             image={piece.imageSource}
             title={piece.name}
@@ -20,7 +19,6 @@ export default function ArtPieces({
             slug={piece.slug}
             onSubmitComment={onSubmitComment}
           />
-          {/* </Link> */}
         </li>
       ))}
     </ul>

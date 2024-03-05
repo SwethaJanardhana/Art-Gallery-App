@@ -49,18 +49,37 @@ export default function App({ Component, pageProps }) {
     const commentToAdd = {
       id: uid(),
       comment,
-      date: new Date().toLocaleDateString("en-us", {
-        dateStyle: "medium",
-      }),
+      date: new Date().toLocaleString(),
     };
     setArtPiecesInfo(
       updatedPieces.map((piece) =>
         piece.slug === slug
-          ? { ...piece, comments: [...comments, commentToAdd] }
+          ? {
+              ...piece,
+              comments: piece.comments
+                ? [...piece.comments, commentToAdd]
+                : [commentToAdd],
+            }
           : piece
       )
     );
   }
+
+  function handleDeleteComment(slug, commentId) {
+    setArtPiecesInfo(
+      updatedPieces.map((piece) =>
+        piece.slug === slug
+          ? {
+              ...piece,
+              comments: piece.comments.filter(
+                (comment) => comment.id !== commentId
+              ),
+            }
+          : piece
+      )
+    );
+  }
+
   return (
     <>
       <Layout />
@@ -69,6 +88,7 @@ export default function App({ Component, pageProps }) {
         data={updatedPieces}
         onToggleFavorite={handleToggleFavorite}
         onSubmitComment={handleAddComments}
+        onDeleteComment={handleDeleteComment}
         {...pageProps}
       />
     </>
