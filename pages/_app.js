@@ -44,8 +44,7 @@ export default function App({ Component, pageProps }) {
     );
   }
 
-  function handleAddComments(slug, comment) {
-    console.log(slug, comment);
+  function handleAddComment(slug, comment) {
     const commentToAdd = {
       id: uid(),
       comment,
@@ -87,7 +86,7 @@ export default function App({ Component, pageProps }) {
       <Component
         data={updatedPieces}
         onToggleFavorite={handleToggleFavorite}
-        onSubmitComment={handleAddComments}
+        onSubmitComment={handleAddComment}
         onDeleteComment={handleDeleteComment}
         {...pageProps}
       />
